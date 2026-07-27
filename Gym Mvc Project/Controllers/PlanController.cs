@@ -7,6 +7,7 @@ namespace Gym_Mvc_Project.Controllers
 {
     public class PlanController : Controller
     {
+
         private readonly GymDbContext context;
 
         public PlanController()
