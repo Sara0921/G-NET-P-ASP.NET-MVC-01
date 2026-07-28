@@ -6,10 +6,9 @@ namespace Gym_Mvc_Project.Contexts
 {
     public class GymDbContext : DbContext
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public GymDbContext(DbContextOptions<GymDbContext> options) : base(options)
         {
-            optionsBuilder.UseSqlServer("Server = .; Database = GymDb ;Trusted_Connection = true ; TrustServerCertificate = true");
-
+            
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

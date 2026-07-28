@@ -1,3 +1,8 @@
+using Gym_Mvc_Project.Contexts;
+using GymManagment.DAL.Respositories.Classes;
+using GymManagment.DAL.Respositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
+
 namespace Gym_Mvc_Project
 {
     public class Program
@@ -8,6 +13,17 @@ namespace Gym_Mvc_Project
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            //Register DI
+            builder.Services.AddScoped<IPlanRepository, PlanRepository>();
+            //Ef core will create object from DbContect : AUTOMATIC when ew request it from the container(Dependency Injuction)
+
+            builder.Services.AddDbContext<GymDbContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+            });
+
+
+
 
             var app = builder.Build();
 
